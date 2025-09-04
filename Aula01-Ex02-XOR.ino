@@ -1,4 +1,7 @@
-// XOR
+// Crie um programa que leia dois valores em sequência no Monitor
+// Serial. Os valores possíveis são ‘0’ ou ‘1’. Em posse desses valores,
+// acenda o LED interno da placa seguindo o padrão das portas lógicas
+// AND, OR e XOR.
 
 void setup() {
   Serial.begin(115200);
