@@ -4,15 +4,15 @@
 // - Amarelo: 1s
 // - Verde: 2 s
 
-// Portas dos LEDs
 const int LEDVermelho = 11;
 const int LEDAmarelo = 12;
 const int LEDVerde = 13;
 
-// Estados
 const int LUZ_VERMELHA = 0;
 const int LUZ_AMARELA = 1;
 const int LUZ_VERDE = 2;
+
+int EstadoAtual = LUZ_VERMELHA;
 
 void setup() {
   pinMode(LEDVermelho, OUTPUT);
@@ -21,26 +21,27 @@ void setup() {
 }
 
 void loop() {
-  for (int EstadoAtual = 0; EstadoAtual < 3; ++EstadoAtual) {
-    switch (EstadoAtual) {
-      case LUZ_VERMELHA:
-        digitalWrite(LEDVermelho, HIGH);
-        digitalWrite(LEDAmarelo, LOW);
-        digitalWrite(LEDVerde, LOW);
-        delay(2000);
-        break;
-      case LUZ_AMARELA:
-        digitalWrite(LEDVermelho, LOW);
-        digitalWrite(LEDAmarelo, HIGH);
-        digitalWrite(LEDVerde, LOW);
-        delay(1000);
-        break;
-      case LUZ_VERDE:
-        digitalWrite(LEDVermelho, LOW);
-        digitalWrite(LEDAmarelo, LOW);
-        digitalWrite(LEDVerde, HIGH);
-        delay(2000);
-        break;
-    }
+  switch (EstadoAtual) {
+    case LUZ_VERMELHA:
+      digitalWrite(LEDVermelho, HIGH);
+      digitalWrite(LEDAmarelo, LOW);
+      digitalWrite(LEDVerde, LOW);
+      EstadoAtual = LUZ_VERDE;
+      delay(2000);
+      break;
+    case LUZ_AMARELA:
+      digitalWrite(LEDVermelho, LOW);
+      digitalWrite(LEDAmarelo, HIGH);
+      digitalWrite(LEDVerde, LOW);
+      EstadoAtual = LUZ_VERMELHA;
+      delay(1000);
+      break;
+    case LUZ_VERDE:
+      digitalWrite(LEDVermelho, LOW);
+      digitalWrite(LEDAmarelo, LOW);
+      digitalWrite(LEDVerde, HIGH);
+      EstadoAtual = LUZ_AMARELA;
+      delay(2000);
+      break;
   }
 }
